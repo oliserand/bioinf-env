@@ -35,7 +35,7 @@ sudo sed -i 's/xxx/${modeller_key}/' /usr/lib/modeller9.16/modlib/modeller/confi
 
 #Python (2&3) libraries
 sudo pip3 install biopython python-igraph cython mdtraj tensorflow Theano keras && \
-pip install cython mdtraj tensorflow Theano keras
+pip install cython mdtraj tensorflow Theano keras sierrapy
 
 #R libraries
 sudo apt-get install r-cran-rgl r-cran-ggplot2 r-cran-nnet r-cran-amore r-cran-caret r-cran-seqinr
