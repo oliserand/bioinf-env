@@ -24,7 +24,7 @@ apt-get install cmake libjpeg62 python-pygame python3-pip pymol python3-scipy py
      idle-python3.4 python-igraph virtualbox vim git openbabel muscle jalview autodock autogrid autodock-vina vlc \
      icedtea-7-plugin python3-matplotlib python-matplotlib libjpeg62 exfat-utils flashplugin-installer exfat-fuse \
      gimp tiled tupi blender plink emboss octave octave-info grace r-base-core r-base-dev gfortran gromacs libx11-dev \
-     liblzma-dev csh libxml2 svn figtree labyrinth dia pdb2pqr libxml2-dev libopenblas-dev python3-joblib
+     liblzma-dev csh libxml2 svn figtree labyrinth dia pdb2pqr libxml2-dev libopenblas-dev python3-joblib texlive 
 
 
 #Install MODELLER
@@ -34,7 +34,7 @@ sudo dpkg -i modeller_9.16-1_amd64.deb
 sudo sed -i 's/xxx/${modeller_key}/' /usr/lib/modeller9.16/modlib/modeller/config.py
 
 #Python (2&3) libraries
-sudo pip3 install biopython python-igraph cython mdtraj tensorflow Theano keras joblib pandas && \
+sudo pip3 install biopython python-igraph cython mdtraj tensorflow Theano keras joblib pandas jupyter ipywidgets && \
 pip install cython mdtraj tensorflow Theano keras sierrapy
 
 #R libraries
