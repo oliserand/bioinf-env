@@ -14,7 +14,7 @@ echo "syntax on" > /home/${username}/.vimrc
 echo "filetype indent plugin on" >> /home/${username}/.vimrc
 
 #Add R repo to trusty sources
-distro="trusty"
+distro=$(lsb_release -c | sed 's/Codename:\s*//')
 echo "deb http://cran.mirror.ac.za/bin/linux/ubuntu ${distro}/" >> /etc/apt/sources.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
