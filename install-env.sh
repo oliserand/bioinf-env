@@ -24,7 +24,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 #Generic installations (sudo)
 apt-get update
-apt-get install cmake libjpeg62 python3-pip python2-pip idle-python3.* pymol vim git openbabel muscle jalview \
+apt-get install cmake libjpeg62 python3-pip idle-python3.* pymol vim git openbabel muscle jalview \
      autodock autogrid autodock-vina icedtea-*-plugin libjpeg62 exfat-utils flashplugin-installer \
      exfat-fuse gimp  plink emboss octave octave-info grace r-base-core r-base-dev gfortran libx11-dev \
      liblzma-dev csh libxml2 figtree labyrinth dia pdb2pqr libxml2-dev libopenblas-dev cython
