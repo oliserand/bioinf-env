@@ -1,7 +1,7 @@
 # This was written for xenial, but may work for later distros as well (with some tweaking)
 read -p "Enter your username: " username
 # Check username correctness
-[[ $(echo $(id) | grep -q "($username)") ]] || read -p "Invalid user name. Exiting" && exit
+[[ $(grep "^${username}:" /etc/passwd) ]] || (read -p "Invalid user name. Exiting" && exit)
 
 sourcedir="/home/${username}/bin/source"
 #Enter MODELLER installation key. You only have to register and replace "xxx" with it. 
