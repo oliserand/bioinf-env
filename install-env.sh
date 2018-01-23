@@ -5,7 +5,7 @@ read -p "Enter your username: " username
 
 sourcedir="/home/${username}/bin/source"
 #Enter MODELLER installation key. You only have to register and replace "xxx" with it. 
-modeller_key="xxx"
+read -p "Enter your MODELLER key: " modeller_key
 
 #Directory for downloaded sources
 mkdir -p ${sourcedir}
