@@ -36,13 +36,13 @@ pip3 install --upgrade pip && pip3 install numpy scipy matplotlib biopython pyth
 pip3 install mdtraj
 
 #R libraries
-sudo apt-get install r-cran-rgl r-cran-ggplot2 r-cran-nnet r-cran-amore r-cran-caret r-cran-seqinr
+apt-get install r-cran-rgl r-cran-ggplot2 r-cran-caret r-cran-seqinr
 
 #Install MODELLER (sudo)
 cd ${sourcedir}
 wget "https://salilab.org/modeller/9.19/modeller_9.19-1_amd64.deb"
-sudo dpkg -i modeller_9.19-1_amd64.deb 
-sudo sed -i 's/xxx/${modeller_key}/' /usr/lib/modeller9.19/modlib/modeller/config.py
+dpkg -i modeller_9.19-1_amd64.deb 
+sed -i 's/xxx/${modeller_key}/' /usr/lib/modeller9.19/modlib/modeller/config.py
 
 #ACPYPE (Preliminary; requires AmberTools to be installed & sourced)
 cd ${sourcedir}
@@ -72,7 +72,7 @@ cd build
 cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
 make >> gromacs_make.log
 make check >> gromacs_make_check.log
-sudo make install
+make install
 echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
 
 #Installing RStudio
