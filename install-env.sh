@@ -32,11 +32,8 @@ apt-get install cmake libjpeg62 python3-pip idle-python3.* pymol vim git openbab
 #Python (2&3) libraries
 
 pip3 install --upgrade pip && pip3 install numpy scipy matplotlib biopython python-igraph cython tensorflow\
-     Theano keras joblib pandas jupyter ipywidgets
+     Theano keras joblib pandas jupyter ipywidgets sierrapy
 pip3 install mdtraj
-
-pip install --upgrade pip
-pip install numpy scipy matplotlib cython mdtraj tensorflow sierrapy
 
 #R libraries
 sudo apt-get install r-cran-rgl r-cran-ggplot2 r-cran-nnet r-cran-amore r-cran-caret r-cran-seqinr
