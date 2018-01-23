@@ -78,7 +78,7 @@ echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
 #Installing RStudio
 cd ${sourcedir}
 wget "https://download1.rstudio.org/rstudio-0.99.902-amd64.deb"
-sudo dpkg -i rstudio-0.99.902-amd64.deb
+dpkg -i rstudio-0.99.902-amd64.deb
  
 #Installing MGLTools
 cd ${sourcedir}
