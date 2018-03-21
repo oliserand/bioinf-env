@@ -70,7 +70,7 @@ tar xfz gromacs-2016.4.tar.gz
 cd gromacs-2016.4
 mkdir build
 cd build
-cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
+cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_USE_TNG=off
 make >> gromacs_make.log
 make check >> gromacs_make_check.log
 make install
