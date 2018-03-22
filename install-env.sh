@@ -4,6 +4,7 @@ read -p "Enter your username: " username
 [[ $(grep "^${username}:" /etc/passwd) ]] || (read -p "Invalid user name. Exiting" && exit)
 
 sourcedir="/home/${username}/bin/source"
+bindir="/home/${username}/bin"
 #Enter MODELLER installation key. You only have to register and replace "xxx" with it. 
 read -p "Enter your MODELLER key: " modeller_key
 
@@ -16,21 +17,20 @@ if [ -f .vimrc ];then cp .vimrc ".vimrc$(date +%s)";fi
 echo "syntax on" > /home/${username}/.vimrc
 echo "filetype indent plugin on" >> /home/${username}/.vimrc
 
-#Add R repo to trusty sources (sudo)
+#Add R repo to trusty sources
 distro=$(lsb_release -c | sed 's/Codename:\s*//')
 line="http://cran.mirror.ac.za/bin/linux/ubuntu"
 grep -q $line /etc/apt/sources.list || echo "deb $line ${distro}/">> /etc/apt/sources.list && \
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
-#Generic installations (sudo)
+#Generic installations
 apt-get update
 apt-get install cmake libjpeg62 python3-pip idle-python3.* pymol vim git openbabel muscle jalview \
      autodock autogrid autodock-vina icedtea-*-plugin libjpeg62 exfat-utils flashplugin-installer \
-     exfat-fuse gimp  plink emboss octave octave-info grace r-base-core r-base-dev gfortran libx11-dev \
+     exfat-fuse gimp  plink emboss grace r-base-core r-base-dev gfortran libx11-dev \
      liblzma-dev csh libxml2 figtree labyrinth dia pdb2pqr libxml2-dev libopenblas-dev cython
 
-#Python (2&3) libraries
-
+#Python 3 libraries
 pip3 install --upgrade pip && pip3 install numpy scipy matplotlib biopython python-igraph cython tensorflow\
      Theano keras joblib pandas jupyter ipywidgets sierrapy
 pip3 install mdtraj
@@ -39,7 +39,7 @@ pip3 install mdtraj
 apt-get install r-cran-rgl r-cran-ggplot2 r-cran-caret r-cran-seqinr 
 apt-get install libgstreamer-plugins-base0.10-0 libgstreamer0.10-0
 
-#Install MODELLER (sudo)
+#Install MODELLER
 cd ${sourcedir}
 wget "https://salilab.org/modeller/9.19/modeller_9.19-1_amd64.deb"
 dpkg -i modeller_9.19-1_amd64.deb 
@@ -75,6 +75,19 @@ make >> gromacs_make.log
 make check >> gromacs_make_check.log
 make install
 echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
+
+#Installing g_mmpbsa
+cd ${sourcedir}
+wget http://rashmikumari.github.io/g_mmpbsa/package/GMX51x_extrn_APBS/g_mmpbsa.tar.gz
+wget http://rashmikumari.github.io/g_mmpbsa/package/scripts.tar.gz
+tar zxvf g_mmpbsa.tar.gz scripts.tar.gz
+ln -s ${sourcedir}/g_mmpbsa/bin/g_mmpbsa ${bindir}/g_mmpbsa
+ln -s ${sourcedir}/g_mmpbsa/bin/energy2bfac ${bindir}/energy2bfac
+ln -s ${sourcedir}/scripts/MmPbSaDecomp.py ${bindir}/MmPbSaDecomp.py
+ln -s ${sourcedir}/scripts/MmPbSaStat_correlation.py ${bindir}/MmPbSaStat_correlation.py
+ln -s ${sourcedir}/scripts/MmPbSaStat.py ${bindir}/MmPbSaStat.py
+echo "#APBS for g_mmpbsa" >> /home/${username}/.bashrc
+echo "export APBS=$(which apbs)" >> /home/${username}/.bashrc
 
 #Installing RStudio
 cd ${sourcedir}
