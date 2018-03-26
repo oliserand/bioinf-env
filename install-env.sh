@@ -80,7 +80,8 @@ echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
 cd ${sourcedir}
 wget http://rashmikumari.github.io/g_mmpbsa/package/GMX51x_extrn_APBS/g_mmpbsa.tar.gz
 wget http://rashmikumari.github.io/g_mmpbsa/package/scripts.tar.gz
-tar zxvf g_mmpbsa.tar.gz scripts.tar.gz
+tar zxvf g_mmpbsa.tar.gz
+tar zxvf scripts.tar.gz
 ln -s ${sourcedir}/g_mmpbsa/bin/g_mmpbsa ${bindir}/g_mmpbsa
 ln -s ${sourcedir}/g_mmpbsa/bin/energy2bfac ${bindir}/energy2bfac
 ln -s ${sourcedir}/scripts/MmPbSaDecomp.py ${bindir}/MmPbSaDecomp.py
