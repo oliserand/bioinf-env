@@ -119,3 +119,4 @@ tar zxvf gephi-0.9.1-linux.tar.gz
 
 #MS fonts
 #sudo apt-get install ttf-mscorefonts-installer
+echo "Finished execution."
