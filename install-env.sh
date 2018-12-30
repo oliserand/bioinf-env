@@ -24,6 +24,7 @@ grep -q $line /etc/apt/sources.list || echo "deb $line ${distro}/">> /etc/apt/so
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 #Add wxMacMolPlt to sources
+#From https://brettbode.github.io/wxmacmolplt/downloads.html
 echo "deb [trusted=yes] https://dl.bintray.com/brettbode/Xenial xenial main" >> /etc/apt/sources.list
 
 #Generic installations
