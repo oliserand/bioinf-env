@@ -17,17 +17,20 @@ if [ -f .vimrc ];then cp .vimrc ".vimrc$(date +%s)";fi
 echo "syntax on" > /home/${username}/.vimrc
 echo "filetype indent plugin on" >> /home/${username}/.vimrc
 
-#Add R repo to trusty sources
+#Add R repo to xenial sources
 distro=$(lsb_release -c | sed 's/Codename:\s*//')
 line="http://cran.mirror.ac.za/bin/linux/ubuntu"
 grep -q $line /etc/apt/sources.list || echo "deb $line ${distro}/">> /etc/apt/sources.list && \
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
+#Add wxMacMolPlt to sources
+echo "deb [trusted=yes] https://dl.bintray.com/brettbode/Xenial xenial main" >> /etc/apt/sources.list
+
 #Generic installations
 apt-get update
 apt-get install cmake libjpeg62 python3-pip idle-python3.* pymol vim git openbabel muscle jalview \
      autodock autogrid autodock-vina icedtea-*-plugin libjpeg62 exfat-utils flashplugin-installer \
-     exfat-fuse gimp  plink emboss grace r-base-core r-base-dev gfortran libx11-dev \
+     exfat-fuse gimp  plink emboss grace r-base-core r-base-dev gfortran libx11-dev wxmacmolplt \
      liblzma-dev csh libxml2 figtree labyrinth dia pdb2pqr libxml2-dev libopenblas-dev cython
 
 #Python 3 libraries
