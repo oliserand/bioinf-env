@@ -68,11 +68,11 @@ ln -s ${sourcedir}/acpype/acpype.py /home/${username}/bin/acpype
 
 ####################
 
-#Installing GROMACS 2016.4
+#Installing GROMACS 2018.4
 cd ${sourcedir}
-wget "ftp://ftp.gromacs.org/pub/gromacs/gromacs-2016.4.tar.gz"
-tar xfz gromacs-2016.4.tar.gz
-cd gromacs-2016.4
+wget "ftp://ftp.gromacs.org/pub/gromacs/gromacs-2018.4.tar.gz"
+tar xfz gromacs-2018.4.tar.gz
+cd gromacs-2018.4
 mkdir build
 cd build
 cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_USE_TNG=off
