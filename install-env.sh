@@ -29,11 +29,11 @@ echo "deb [trusted=yes] https://dl.bintray.com/brettbode/Xenial xenial main" >> 
 
 #Generic installations
 apt-get update
-apt-get install cmake libjpeg62 python3-pip idle-python3.* pymol vim git openbabel muscle jalview \
+apt-get install cmake libjpeg62 python3-pip idle-python3.* vim git openbabel muscle jalview \
      autodock autogrid autodock-vina icedtea-*-plugin libjpeg62 exfat-utils flashplugin-installer \
      exfat-fuse gimp  plink emboss grace r-base-core r-base-dev gfortran libx11-dev wxmacmolplt \
      liblzma-dev csh libxml2 figtree labyrinth dia pdb2pqr libxml2-dev libopenblas-dev cython \
-     avogadro
+     avogadro build-essential python-dev libpng-dev
 
 #Python 3 libraries
 pip3 install --upgrade pip && pip3 install numpy scipy matplotlib biopython python-igraph cython tensorflow\
@@ -49,6 +49,17 @@ cd ${sourcedir}
 wget "https://salilab.org/modeller/9.19/modeller_9.19-1_amd64.deb"
 dpkg -i modeller_9.19-1_amd64.deb 
 sed -i 's/xxx/${modeller_key}/' /usr/lib/modeller9.19/modlib/modeller/config.py
+
+#Install Open-Source PyMOL
+#From https://pymolwiki.org/index.php/Linux_Install
+cd ${sourcedir}
+apt-get install python-pmw libglew-dev freeglut3-dev libfreetype6-dev libmsgpack-dev \
+python-pyqt5.qtopengl libglm-dev
+git clone https://github.com/schrodinger/pymol-open-source.git
+cd pymol-open-source
+prefix=${bindir}/bin/pymol-open-source-build
+python2 setup.py build install --no-glut --home=$prefix
+ln -s ${bindir}/bin/pymol-open-source-build/bin/pymol /home/${username}/bin/pymol
 
 #ACPYPE (Preliminary; requires AmberTools to be installed & sourced)
 cd ${sourcedir}
