@@ -133,6 +133,15 @@ cd ${sourcedir}
 wget https://github.com/gephi/gephi/releases/download/v0.9.1/gephi-0.9.1-linux.tar.gz
 tar zxvf gephi-0.9.1-linux.tar.gz
 
+#Docker
+apt-get remove docker docker-engine docker.io containerd runc
+apt-get install apt-transport-https  ca-certificates curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+apt-key fingerprint 0EBFCD88
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io
+
 #MS fonts
 #sudo apt-get install ttf-mscorefonts-installer
 echo "Finished execution."
