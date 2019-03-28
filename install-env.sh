@@ -124,6 +124,16 @@ echo "alias vision='${sourcedir}/mgltools_x86_64Linux2_1.5.6/bin/vision'" >> /ho
 echo "alias pythonsh='${sourcedir}/mgltools_x86_64Linux2_1.5.6/bin/pythonsh'" >> /home/${username}/.bashrc
 echo "export PYTHONPATH=$PYTHONPATH:${sourcedir}/mgltools_x86_64Linux2_1.5.6/MGLToolsPckgs" >> /home/${username}/.bashrc
 
+#MOLDEN
+cd ${sourcedir}
+wget ftp://ftp.cmbi.umcn.nl/pub/molgraph/molden/molden5.9.tar.gz
+tar zxvf molden5.9.tar.gz
+cd molden5.9/
+make >& make.log
+make moldenogl
+ln -s ${sourcedir}/molden5.9/molden ${bindir}/molden
+ln -s ${sourcedir}/molden5.9/gmolden ${bindir}/gmolden
+
 #DiscoveryStudio
 echo "Get DS from 'http://accelrys.com/products/collaborative-science/biovia-discovery-studio/visualization-download.php'" 
 echo "Then Run ./activateDiscoveryStudio.sh"
