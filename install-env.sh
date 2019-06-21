@@ -40,9 +40,12 @@ pip3 install --upgrade pip && pip3 install numpy scipy matplotlib biopython pyth
      Theano keras joblib pandas jupyter ipywidgets sierrapy
 pip3 install mdtraj
 
-#R libraries 
+#R/RStudio libraries 
 apt-get install r-cran-rgl r-cran-ggplot2 r-cran-caret r-cran-seqinr 
 apt-get install libgstreamer-plugins-base0.10-0 libgstreamer0.10-0 libclang-dev
+cd ${sourcedir}
+wget https://download1.rstudio.org/desktop/xenial/amd64/rstudio-1.2.1335-amd64.deb
+dpkg -i rstudio-1.2.1335-amd64.deb
 
 #Install MODELLER
 cd ${sourcedir}
