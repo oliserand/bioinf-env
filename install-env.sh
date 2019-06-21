@@ -33,7 +33,7 @@ apt-get install cmake libjpeg62 python3-pip idle-python3.* vim git openbabel mus
      autodock autogrid autodock-vina icedtea-*-plugin libjpeg62 exfat-utils flashplugin-installer \
      exfat-fuse gimp  plink emboss grace r-base-core r-base-dev gfortran libx11-dev wxmacmolplt \
      liblzma-dev csh libxml2 figtree labyrinth dia pdb2pqr libxml2-dev libopenblas-dev cython \
-     avogadro build-essential python-dev libpng-dev
+     avogadro build-essential python-dev 
 
 #Python 3 libraries
 pip3 install --upgrade pip && pip3 install numpy scipy matplotlib biopython python-igraph cython tensorflow\
@@ -41,7 +41,7 @@ pip3 install --upgrade pip && pip3 install numpy scipy matplotlib biopython pyth
 pip3 install mdtraj
 
 #R/RStudio libraries 
-apt-get install r-cran-rgl r-cran-ggplot2 r-cran-caret r-cran-seqinr libpng16-dev
+apt-get install r-cran-rgl r-cran-ggplot2 r-cran-caret r-cran-seqinr libpng-dev libfreetype6-dev libpng16-dev
 apt-get install libgstreamer-plugins-base0.10-0 libgstreamer0.10-0 libclang-dev
 cd ${sourcedir}
 wget https://download1.rstudio.org/desktop/xenial/amd64/rstudio-1.2.1335-amd64.deb
