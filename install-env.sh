@@ -20,7 +20,7 @@ echo "filetype indent plugin on" >> /home/${username}/.vimrc
 #Add R repo to xenial sources
 distro=$(lsb_release -c | sed 's/Codename:\s*//')
 line="http://cran.mirror.ac.za/bin/linux/ubuntu"
-grep -q $line /etc/apt/sources.list || echo "deb $line ${distro}/">> /etc/apt/sources.list && \
+grep -q $line /etc/apt/sources.list || echo "deb $line ${distro}-cran35/">> /etc/apt/sources.list && \
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 #Add wxMacMolPlt to sources
