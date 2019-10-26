@@ -79,7 +79,6 @@ ln -s ${sourcedir}/acpype/acpype.py /home/${username}/bin/acpype
 #source amber.sh # Use amber.csh if you use tcsh or csh
 #sudo make install
 #echo "source $AMBERHOME/amber.sh" >> ~/.bashrc  # Add Amber to your environment
-
 ####################
 
 #Installing GROMACS 2018.4
@@ -108,11 +107,6 @@ ln -s ${sourcedir}/scripts/MmPbSaStat_correlation.py ${bindir}/MmPbSaStat_correl
 ln -s ${sourcedir}/scripts/MmPbSaStat.py ${bindir}/MmPbSaStat.py
 echo "#APBS for g_mmpbsa" >> /home/${username}/.bashrc
 echo "export APBS=$(which apbs)" >> /home/${username}/.bashrc
-
-#Installing RStudio
-cd ${sourcedir}
-wget "https://download1.rstudio.org/rstudio-0.99.902-amd64.deb"
-dpkg -i rstudio-0.99.902-amd64.deb
  
 #Installing MGLTools
 cd ${sourcedir}
