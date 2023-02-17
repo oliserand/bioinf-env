@@ -15,7 +15,6 @@ read -p "Enter your MODELLER key: " modeller_key
 #Directory for downloaded sources
 mkdir -p ${sourcedir}
 mkdir -p ${bindir}
-echo "export PATH=${bindir}:$PATH" >> /home/${username}/.bashrc
 
 # Dowload binaries ahead of time
 cd ${sourcedir} 
@@ -106,7 +105,6 @@ make -j4
 make -j4 check
 make install
 echo "#GROMACS" >> /home/${username}/.bashrc
-echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
 
 #Installing MGLTools
 cd ${sourcedir}
@@ -148,5 +146,10 @@ sed -i 's/-b(){}\[\],\&\^%#;|\\\\//' /usr/local/bin/vmd
 cd ${sourcedir}
 #wget https://az764295.vo.msecnd.net/stable/441438abd1ac652551dbe4d408dfcec8a499b8bf/code_1.75.1-1675893397_amd64.deb
 [[ -f code_1.75.1-1675893397_amd64.deb ]] && dpkg -i code_1.75.1-1675893397_amd64.deb
+
+echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
+echo "export PATH=${bindir}:${PATH}" >> /home/${username}/.bashrc
+echo "unset MANPATH" >> /home/${username}/.bashrc
+echo "MANDATORY_MANPATH /usr/local/gromacs/share/man" >> /home/${username}/.manpath
 
 echo "Installations done"
