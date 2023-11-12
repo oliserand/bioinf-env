@@ -117,7 +117,7 @@ echo "#MGLTools setup">> /home/${username}/.bashrc
 echo ". ${sourcedir}/${mgltools_ver}/initMGLtools.sh" >> /home/${username}/.bashrc
 sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py
 sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py
-echo "export PATH=$PATH:${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24" >> /home/${username}/.bashrc
+echo 'export PATH=$PATH:'"${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24" >> /home/${username}/.bashrc
 
 #PROPKA and PDB2PQR
 cd ${sourcedir} && git clone https://github.com/jensengroup/propka && cd propka && pip install .
@@ -148,7 +148,7 @@ cd ${sourcedir}
 [[ -f code_1.75.1-1675893397_amd64.deb ]] && dpkg -i code_1.75.1-1675893397_amd64.deb
 
 echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
-echo "export PATH=${bindir}:${PATH}" >> /home/${username}/.bashrc
+echo "export PATH=${bindir}:"'${PATH}' >> /home/${username}/.bashrc
 echo "unset MANPATH" >> /home/${username}/.bashrc
 echo "MANDATORY_MANPATH /usr/local/gromacs/share/man" >> /home/${username}/.manpath
 
