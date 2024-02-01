@@ -63,6 +63,9 @@ cd $sourcedir
 # Fix color representation in git
 echo "export LESS=-R" >> /home/${username}/.bashrc
 
+# mamba
+conda install conda-forge::mamba
+
 # Jalview
 conda config --add channels defaults
 conda config --add channels bioconda
