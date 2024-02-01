@@ -53,6 +53,8 @@ add-apt-repository -y ppa:c2d4u.team/c2d4u4.0+
 
 # Install RStudio
 cd $sourcedir 
+apt install -y lib32gcc-s1 lib32stdc++6 libc6-i386 libclang-14-dev libclang-common-14-dev libclang-dev libclang1-14 libllvm14 libobjc-11-dev libobjc4 libpq5 libssl-dev
+
 #wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2022.12.0-353-amd64.deb
 [[ -f rstudio-2022.12.0-353-amd64.deb ]] && dpkg -i rstudio-2022.12.0-353-amd64.deb;apt -f install
 
