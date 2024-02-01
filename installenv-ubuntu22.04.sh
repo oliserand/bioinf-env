@@ -94,8 +94,8 @@ tar xfz gromacs-${gmxver}.tar.gz
 cd gromacs-${gmxver}
 mkdir build && cd build
 cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON
-make -j4
-make -j4 check
+make -j`nproc`
+make -j`nproc` check
 make install
 echo "#GROMACS" >> /home/${username}/.bashrc
 
