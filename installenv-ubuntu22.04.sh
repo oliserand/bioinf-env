@@ -73,30 +73,18 @@ conda config --add channels conda-forge
 conda install -y jalview==2.10.5
 
 # Openbabel
-conda install -y -c openbabel openbabel
+mamba install -y -c openbabel openbabel
 
 # ACPYPE
-conda install -y -c conda-forge acpype
+mamba install -y -c conda-forge acpype
 
 #MODELLER
 conda config --add channels salilab
-conda install -y modeller
+mamba install -y -c salilab modeller
 sed -i "s/XXXX/${modeller_key}/" ${bindir}/miniconda/lib/modeller-*.*/modlib/modeller/config.py
 
 #Install Open-Source PyMOL
-# Simple method
-conda install -c conda-forge pymol-open-source
-# conda install -c tpeulen pymol-open-source
-# Or from source
-#From https://pymolwiki.org/index.php/Linux_Install
-# cd ${sourcedir}
-# apt-get install -y python-pmw git build-essential python3-dev libglew-dev libpng-dev libfreetype6-dev libxml2-dev libmsgpack-dev python3-pyqt5.qtopengl libglm-dev libnetcdf-dev
-# conda install -y -c anaconda pyqt 
-# git clone https://github.com/schrodinger/pymol-open-source.git
-# cd pymol-open-source
-# prefix=${bindir}/pymol-open-source-build
-# python3 setup.py build install --home=$prefix
-# ln -s ${bindir}/pymol-open-source-build/bin/pymol /home/${username}/bin/pymol
+mamba install -y -c conda-forge pymol-open-source
 
 #Installing GROMACS
 cd ${sourcedir}
