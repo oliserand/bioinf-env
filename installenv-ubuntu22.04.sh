@@ -12,6 +12,11 @@ bindir="/home/${username}/bin"
 #Enter MODELLER installation key. You only have to register and replace "xxx" with it. 
 read -p "Enter your MODELLER key: " modeller_key
 
+apt update
+
+# Microsoft fonts and other restricted extras
+apt install -y ttf-mscorefonts-installer ubuntu-restricted-extras
+
 #Directory for downloaded sources
 mkdir -p ${sourcedir}
 mkdir -p ${bindir}
@@ -24,14 +29,10 @@ wget https://ccsb.scripps.edu/mgltools/download/491/ -O mgltools.tar.gz &
 wget https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz &
 wget https://az764295.vo.msecnd.net/stable/441438abd1ac652551dbe4d408dfcec8a499b8bf/code_1.75.1-1675893397_amd64.deb &
 
-apt update
-
-# Microsoft fonts and other restricted extras
-apt install -y ttf-mscorefonts-installer ubuntu-restricted-extras
+wait
 
 #Generic installations
 apt install -y vim git muscle autodock autogrid autodock-vina libcanberra-gtk-module grace cmake g++
-
 
 #Set up vim profile for python (code highlighting & indentation)
 cd /home/${username}
@@ -81,17 +82,18 @@ sed -i "s/XXXX/${modeller_key}/" ${bindir}/miniconda/lib/modeller-*.*/modlib/mod
 
 #Install Open-Source PyMOL
 # Simple method
-#conda install -c tpeulen pymol-open-source
+conda install -c conda-forge pymol-open-source
+# conda install -c tpeulen pymol-open-source
 # Or from source
 #From https://pymolwiki.org/index.php/Linux_Install
-cd ${sourcedir}
-apt-get install -y python-pmw git build-essential python3-dev libglew-dev libpng-dev libfreetype6-dev libxml2-dev libmsgpack-dev python3-pyqt5.qtopengl libglm-dev libnetcdf-dev
-conda install -y -c anaconda pyqt 
-git clone https://github.com/schrodinger/pymol-open-source.git
-cd pymol-open-source
-prefix=${bindir}/pymol-open-source-build
-python3 setup.py build install --home=$prefix
-ln -s ${bindir}/pymol-open-source-build/bin/pymol /home/${username}/bin/pymol
+# cd ${sourcedir}
+# apt-get install -y python-pmw git build-essential python3-dev libglew-dev libpng-dev libfreetype6-dev libxml2-dev libmsgpack-dev python3-pyqt5.qtopengl libglm-dev libnetcdf-dev
+# conda install -y -c anaconda pyqt 
+# git clone https://github.com/schrodinger/pymol-open-source.git
+# cd pymol-open-source
+# prefix=${bindir}/pymol-open-source-build
+# python3 setup.py build install --home=$prefix
+# ln -s ${bindir}/pymol-open-source-build/bin/pymol /home/${username}/bin/pymol
 
 #Installing GROMACS
 cd ${sourcedir}
