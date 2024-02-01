@@ -66,7 +66,7 @@ apt install -y lib32gcc-s1 lib32stdc++6 libc6-i386 libclang-14-dev libclang-comm
 echo "export LESS=-R" >> /home/${username}/.bashrc
 
 # mamba
-conda install -f conda-forge::mamba
+conda install -y conda-forge::mamba
 
 # Jalview
 conda config --add channels defaults
