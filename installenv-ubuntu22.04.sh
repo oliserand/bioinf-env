@@ -64,7 +64,7 @@ cd $sourcedir
 echo "export LESS=-R" >> /home/${username}/.bashrc
 
 # mamba
-conda install conda-forge::mamba
+conda install -f conda-forge::mamba
 
 # Jalview
 conda config --add channels defaults
