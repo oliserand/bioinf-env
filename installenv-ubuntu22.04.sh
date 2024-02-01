@@ -101,19 +101,6 @@ make -j`nproc` check
 make install
 echo "#GROMACS" >> /home/${username}/.bashrc
 
-#Installing MGLTools
-cd ${sourcedir}
-#wget https://ccsb.scripps.edu/mgltools/download/491/ -O mgltools.tar.gz
-[[ -f mgltools.tar.gz ]] && tar -zxvf mgltools.tar.gz
-mgltools_ver=`ls -d mgltools_x86_64Linux2*/ | tr -d /`
-cd ${mgltools_ver}
-./install.sh
-echo "#MGLTools setup">> /home/${username}/.bashrc
-echo ". ${sourcedir}/${mgltools_ver}/initMGLtools.sh" >> /home/${username}/.bashrc
-sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py
-sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py
-echo 'export PATH=$PATH:'"${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24" >> /home/${username}/.bashrc
-
 #PROPKA and PDB2PQR
 cd ${sourcedir} && git clone https://github.com/jensengroup/propka && cd propka && pip install .
 cd ${sourcedir} && git clone https://github.com/Electrostatics/pdb2pqr && cd pdb2pqr && pip install .
@@ -141,6 +128,19 @@ sed -i 's/-b(){}\[\],\&\^%#;|\\\\//' /usr/local/bin/vmd
 cd ${sourcedir}
 #wget https://az764295.vo.msecnd.net/stable/441438abd1ac652551dbe4d408dfcec8a499b8bf/code_1.75.1-1675893397_amd64.deb
 [[ -f code_1.75.1-1675893397_amd64.deb ]] && dpkg -i code_1.75.1-1675893397_amd64.deb
+
+#Installing MGLTools
+cd ${sourcedir}
+#wget https://ccsb.scripps.edu/mgltools/download/491/ -O mgltools.tar.gz
+[[ -f mgltools.tar.gz ]] && tar -zxvf mgltools.tar.gz
+mgltools_ver=`ls -d mgltools_x86_64Linux2*/ | tr -d /`
+cd ${mgltools_ver}
+./install.sh
+echo "#MGLTools setup">> /home/${username}/.bashrc
+echo ". ${sourcedir}/${mgltools_ver}/initMGLtools.sh" >> /home/${username}/.bashrc
+sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py
+sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py
+echo 'export PATH=$PATH:'"${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24" >> /home/${username}/.bashrc
 
 echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
 echo "export PATH=${bindir}:"'${PATH}' >> /home/${username}/.bashrc
