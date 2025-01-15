@@ -1,5 +1,5 @@
 #!/bin/env bash
-# This was written for Ubuntu 20.04 LTS
+# This was written for Ubuntu 22.04 LTS
 # The script is to be executed as the superuser ("sudo su")
 # Some inputs are expected while the script is being run
 
@@ -65,9 +65,6 @@ apt install -y lib32gcc-s1 lib32stdc++6 libc6-i386 libclang-14-dev libclang-comm
 # Fix color representation in git
 echo "export LESS=-R" >> /home/${username}/.bashrc
 
-# mamba
-conda install -y conda-forge::mamba
-
 # Jalview
 conda config --add channels defaults
 conda config --add channels bioconda
@@ -75,22 +72,22 @@ conda config --add channels conda-forge
 conda install -y jalview==2.10.5
 
 # Openbabel
-mamba install -y -c openbabel openbabel
+conda install -y -c openbabel openbabel
 
 # ACPYPE
-mamba install -y -c conda-forge acpype
+conda install -y -c conda-forge acpype
 
 #MODELLER
 conda config --add channels salilab
-mamba install -y -c salilab modeller
+conda install -y -c salilab modeller
 sed -i "s/XXXX/${modeller_key}/" ${bindir}/miniconda/lib/modeller-*.*/modlib/modeller/config.py
 
 #Install Open-Source PyMOL
-mamba install -y -c conda-forge pymol-open-source
+conda install -y -c conda-forge pymol-open-source
 
 #Installing GROMACS
 cd ${sourcedir}
-gmxver="2022"
+gmxver="2024"
 wget ftp://ftp.gromacs.org/pub/gromacs/gromacs-${gmxver}.tar.gz
 tar xfz gromacs-${gmxver}.tar.gz
 cd gromacs-${gmxver}
@@ -126,8 +123,8 @@ sed -i 's/-b(){}\[\],\&\^%#;|\\\\//' /usr/local/bin/vmd
 
 #VS Code
 cd ${sourcedir}
-#wget https://az764295.vo.msecnd.net/stable/441438abd1ac652551dbe4d408dfcec8a499b8bf/code_1.75.1-1675893397_amd64.deb
-[[ -f code_1.75.1-1675893397_amd64.deb ]] && dpkg -i code_1.75.1-1675893397_amd64.deb
+wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/91fbdddc47bc9c09064bf7acf133d22631cbf083/code_1.96.3-1736454372_amd64.deb -O vscode.deb
+[[ -f vscode.deb ]] && dpkg -i vscode.deb
 
 #Installing MGLTools
 cd ${sourcedir}
@@ -141,6 +138,8 @@ echo ". ${sourcedir}/${mgltools_ver}/initMGLtools.sh" >> /home/${username}/.bash
 sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_receptor4.py
 sed -i "/usr.bin.env python/ c \#\!/usr/bin/env ${sourcedir}/${mgltools_ver}/bin/pythonsh" ${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py
 echo 'export PATH=$PATH:'"${sourcedir}/${mgltools_ver}/MGLToolsPckgs/AutoDockTools/Utilities24" >> /home/${username}/.bashrc
+
+wait
 
 echo ". /usr/local/gromacs/bin/GMXRC" >> /home/${username}/.bashrc
 echo "export PATH=${bindir}:"'${PATH}' >> /home/${username}/.bashrc
